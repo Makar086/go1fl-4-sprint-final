@@ -5,6 +5,7 @@ import (
 	"strings"
 	"strconv"
 	"errors"
+	"log"
 	
 	
 )
@@ -56,13 +57,13 @@ func meanSpeed(steps int, height float64, duration time.Duration) float64 {
 if steps <=0||height <=0|| duration <=0{
 	return 0
 	}
-	if duration>0{
+	
 	dist:= distance(steps , height)
 	
 	// Переводим в часы
 	hours := duration.Hours()
 	return dist/hours
-	}
+	
 	return 0
 }
 
@@ -81,6 +82,7 @@ if err != nil {
 	calore, err:=RunningSpentCalories(steps, weight, height, time)
 if err != nil {
 			
+			log.Println("Ошибка при разборе данных:", err)
 			return  "", err
 		}
 	distan:=distance(steps, height)
